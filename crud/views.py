@@ -6,9 +6,15 @@ from .models import Discipline
 from .forms import DisciplineForm
 
 def index(request):
+    '''
+        Main page
+    '''
     return render(request, 'index.html', {'itens': Discipline.objects.all()})
 
 def add(request):
+    '''
+        Add a new discipline
+    '''
     template = 'add.html'
     context = {}
 
@@ -24,9 +30,15 @@ def add(request):
     return render(request, template, context)
 
 def show(request, id):
+    '''
+        Shows information about a discipline
+    '''
     return render(request, 'show.html', {'discipline': get_object_or_404(Discipline, pk=id)})
 
 def edit(request, id):
+    '''
+        Edits a discipline
+    '''
     template = 'edit.html'
     context = {}
 
@@ -40,4 +52,14 @@ def edit(request, id):
     return render(request, template, context)
 
 def delete(request, id):
-    pass
+    '''
+        Deletes a discipline
+    '''
+    template = 'delete.html'
+    context = {'discipline': get_object_or_404(Discipline, pk=id)}
+
+    if request.method == 'POST':
+        context['discipline'].delete()
+        return redirect('/')
+
+    return render(request, template, context)
