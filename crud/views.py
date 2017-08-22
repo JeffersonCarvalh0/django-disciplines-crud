@@ -31,13 +31,11 @@ def edit(request, id):
     context = {}
 
     context['discipline'] = get_object_or_404(Discipline, pk=id)
-    context['form'] = DisciplineForm(instance=context['discipline'])
+    context['form'] = DisciplineForm(request.POST or None, instance=context['discipline'])
 
-    if request.method == 'POST':
-        form = DisciplineForm(request.POST, instance=context['discipline'])
-        if form.is_valid():
-            form.save()
-            return redirect('/')
+    if context['form'].is_valid():
+        context['form'].save()
+        return redirect('/')
 
     return render(request, template, context)
 
