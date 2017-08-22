@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Discipline
 from .forms import DisciplineForm
 
@@ -24,7 +24,7 @@ def add(request):
     return render(request, template, context)
 
 def show(request, id):
-    pass
+    return render(request, 'show.html', {'discipline': get_object_or_404(Discipline, pk=id)})
 
 def delete(request, id):
     pass

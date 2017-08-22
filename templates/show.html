@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block Title %}
+    <title> {{ discipline.name }} </title>
+{% endblock %}
+
+{% block body %}
+    <h4> Information about {{ discipline.name }} </h4>
+    <br><br>
+    <div class="divider"></div>
+
+    <div class="section">
+        <h5> Short name </h5>
+        <p> {{ discipline.short }} </p>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section">
+        <h5> Hours </h5>
+        <p> {{ discipline.hours }}h </p>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section">
+        <h5> Professor's E-mail </h5>
+        <p> {{ discipline.email }} </p>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section">
+        <h5> Active </h5>
+        {% if discipline.active %}
+            <p> Yes </p>
+        {% else %}
+            <p> No </p>
+        {% endif %}
+    </div>
+    <div class="divider"></div>
+    <br><br>
+
+    <div class="right-align">
+        <a href="/edit/{{ discipline.id }}" class="waves-effect waves-light btn"> Edit </a>
+        <a href="/delete/{{ discipline.id }}" class="waves-effect waves-light btn red"> Delete </a>
+        <a href="/" class="waves-effect waves-light btn-flat grey"> Back </a>
+    </div>
+
+{% endblock %}
