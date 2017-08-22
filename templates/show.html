@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block Title %}
-    <title> {{ discipline.name }} </title>
+    <title> View {{ discipline.name }} </title>
 {% endblock %}
 
 {% block body %}
@@ -44,7 +44,7 @@
     <div class="right-align">
         <a href="/edit/{{ discipline.id }}" class="waves-effect waves-light btn"> Edit </a>
         <a href="/delete/{{ discipline.id }}" class="waves-effect waves-light btn red"> Delete </a>
-        <a href="/" class="waves-effect waves-light btn-flat grey"> Back </a>
+        <a href="/" class="waves-effect waves-light btn grey"> Back </a>
     </div>
 
 {% endblock %}

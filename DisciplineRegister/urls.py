@@ -22,5 +22,6 @@ urlpatterns = [
     url(r'^$', crud.views.index),
     url(r'^add/$', crud.views.add),
     url(r'^show/(?P<id>[0-9]+)/', crud.views.show),
+    url(r'^edit/(?P<id>[0-9]+)/', crud.views.edit),
     url(r'^delete/(?P<id>[0-9]+)/', crud.views.delete),
 ]

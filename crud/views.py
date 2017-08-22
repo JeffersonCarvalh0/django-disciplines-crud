@@ -26,5 +26,20 @@ def add(request):
 def show(request, id):
     return render(request, 'show.html', {'discipline': get_object_or_404(Discipline, pk=id)})
 
+def edit(request, id):
+    template = 'edit.html'
+    context = {}
+
+    context['discipline'] = get_object_or_404(Discipline, pk=id)
+    context['form'] = DisciplineForm(instance=context['discipline'])
+
+    if request.method == 'POST':
+        form = DisciplineForm(request.POST, instance=context['discipline'])
+        if form.is_valid():
+            form.save()
+            return redirect('/')
+
+    return render(request, template, context)
+
 def delete(request, id):
     pass
