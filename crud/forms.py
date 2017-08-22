@@ -10,4 +10,4 @@ class DisciplineForm(forms.ModelForm):
     class Meta:
         model = Discipline
         fields = ('name', 'short', 'hours', 'email', 'active')
-        labels = {'email': "Professor's E-mail"}
+        labels = {'email': "Professor's E-mail", 'short': 'Short name'}
