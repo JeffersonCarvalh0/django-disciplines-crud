@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block title %}
+    <title> Index </title>
+{% endblock %}
+
+{% block body %}
+    <div class="center">
+        <h4> List of disciplines </h4>
+    </div>
+    <br><br>
+    <table class = "highlight">
+        <thead>
+            <tr>
+                <th> Name </th>
+                <th> URL </th>
+                <th> Actions </th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for item in itens %}
+                <tr>
+                    <td>
+                        {{ item.name }}
+                    </td>
+                    <td>
+                        <a href="{{ item.url }}"> {{ request.get_host }}/{{ item.url }} </a>
+                    </td>
+                    <td>
+                        <a href="/delete/{{ item.id }}"> Delete </a>
+                    </td>
+                </tr>
+
+            {% empty %}
+                <tr>
+                    <td>
+                        <h5> No disciplines registered. </h5>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <br><br>
+
+    <div class="right-align">
+        <a href="/add/" class="btn"> Add New Discipline </a>
+    </div>
+{% endblock %}

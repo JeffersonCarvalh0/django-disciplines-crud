@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block Title %}
+    <title> New Discipline </title>
+{% endblock %}
+
+{% block body %}
+    <h4> New </h4>
+    <h5>Insert the information about the discipline here.</h5>
+
+    <br>
+    {% if form.errors %}
+        Please fix the following errors:
+        {% for field in form %}
+            {% for error in field.errors %}
+                <div class="card-panel red">
+                    <strong> {{ field.label }}: {{ field.errors|striptags }} </strong>
+                </div>
+            {% endfor %}
+        {% endfor %}
+    <br>
+    {% endif %}
+
+    <form action="" method="post">
+        {% csrf_token %}
+        <div class="input-field">
+            {{ form.name.label_tag }}
+            {{ form.name }}
+        </div>
+
+        <div class="input-field">
+            {{ form.short.label_tag }}
+            {{ form.short }}
+        </div>
+
+        <div class="input-field">
+            {{ form.hours.label_tag }}
+            {{ form.hours }}
+        </div>
+
+        <div class="input-field">
+            {{ form.email.label_tag }}
+            {{ form.email }}
+        </div>
+
+        <div class="switch">
+            <label>
+                {{ form.active.label_tag }}
+                {{ form.active }}
+                <span class="lever"></span>
+            </label>
+        </div>
+        <br><br>
+        <button type="submit" class="btn"> Send </button>
+        <a href="/" class="btn-flat grey"> Back </a>
+    </form>
+
+{% endblock %}
